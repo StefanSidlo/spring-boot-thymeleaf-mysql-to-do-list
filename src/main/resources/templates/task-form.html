@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Specify task attributes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+
+    <h2>Specify task attributes</h2>
+    <hr/>
+    <form th:action="@{/saveTask}" th:object="${task}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{category}" placeholder="Enter category" class="form-control">
+        <input type="text" th:field="*{deadline}" placeholder="Enter deadline" class="form-control">
+        <input type="text" th:field="*{place}" placeholder="Enter place" class="form-control">
+        <input type="text" th:field="*{description}" placeholder="Enter description" class="form-control">
+
+        <button class="btn btn-primary" type="submit">Save</button>
+
+    </form>
+
+</div>
+</body>
+</html>

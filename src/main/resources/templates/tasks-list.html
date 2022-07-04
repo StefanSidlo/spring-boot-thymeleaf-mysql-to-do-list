@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>List of your tasks</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h3> Tasks List </h3>
+
+    <hr/>
+    <a th:href="@{/newTaskForm}" class="btn btn-primary"> New task </a>
+
+    <hr/>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th> Category</th>
+            <th> Deadline</th>
+            <th> Place</th>
+            <th> Description</th>
+            <th> Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="task: ${tasks}">
+            <td th:text="${task.category}"></td>
+            <td th:text="${task.deadline}"></td>
+            <td th:text="${task.place}"></td>
+            <td th:text="${task.description}"></td>
+            <td>
+                <a th:href="@{/updateForm(taskId=${task.id})}" class="btn btn-primary"> Update </a>
+                <a th:href="@{/finishTask(taskId=${task.id})}" class="btn btn-primary" style="background-color:green">
+                    Finish </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
